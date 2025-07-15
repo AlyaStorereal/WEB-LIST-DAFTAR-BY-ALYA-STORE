@@ -3,211 +3,723 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALYA STORE</title>
+    <title>ALYA STORE - HOSTING MURAH </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #d63031;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
         }
         
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
         
         header {
-            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
             padding: 20px 0;
-            background-color: #1e1e1e;
+            text-align: center;
             border-radius: 10px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
-        h1 {
-            color: #4CAF50;
-            margin: 0;
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
         
-        .product-list {
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .products {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
         
-        .product {
-            background-color: #1e1e1e;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            height: 180px;
+            background: linear-gradient(45deg, #f6f7f9, #e3e6ea);
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 3rem;
         }
         
-        .product:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .product-info {
+            padding: 20px;
         }
         
-        .product-name {
-            font-weight: bold;
-            font-size: 18px;
-            color: #4CAF50;
-            margin-bottom: 5px;
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
         }
         
         .product-price {
-            color: #ff9800;
+            font-size: 1.1rem;
+            color: var(--success);
+            font-weight: 700;
             margin-bottom: 15px;
         }
         
-        .whatsapp-btn {
-            background-color: #25D366;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: auto;
-            transition: background-color 0.3s;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
+        .product-desc {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
         }
         
-        .whatsapp-btn:hover {
-            background-color: #128C7E;
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5a4fcf;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
         }
         
         footer {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 50px;
             padding: 20px;
-            background-color: #1e1e1e;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 20px;
             border-radius: 10px;
-        }
-        
-        .contact {
             margin-top: 30px;
-            background-color: #1e1e1e;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        audio {
-            width: 100%;
+        .contact-info h2 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-top: 20px;
-            border-radius: 50px;
         }
         
-        .music-player {
-            background-color: #1e1e1e;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+        .social-links a {
+            color: white;
+            background: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
         
-        .music-title {
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background: #5a4fcf;
+        }
+        
+        /* Testimoni Section */
+        .testimonials {
+            margin: 50px 0;
+        }
+        
+        .section-title {
             text-align: center;
-            margin-bottom: 10px;
-            color: #4CAF50;
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '\201C';
+            font-family: Georgia, serif;
+            font-size: 4rem;
+            color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .rating {
+            color: var(--warning);
+            margin-top: 5px;
+        }
+        
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 50px;
+            padding: 10px 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .music-control {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .music-control:hover {
+            background: #5a4fcf;
+            transform: scale(1.1);
+        }
+        
+        .music-info {
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .products, .testimonial-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .music-player {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px 12px;
+            }
+            
+            .music-control {
+                width: 35px;
+                height: 35px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Audio Element (Hidden) -->
+    <audio id="bgMusic" loop>
+        <source src="https://files.catbox.moe/fuydmh.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+    
+    <!-- Music Player UI -->
+    <div class="music-player">
+        <div class="music-control" id="musicToggle">
+            <i class="fas fa-play" id="musicIcon"></i>
+        </div>
+        <div class="music-info">
+            Musik Latar
+        </div>
+    </div>
+    
     <div class="container">
         <header>
-            <h1>LIST DAFTAR PRODUK BY:ALYA STORE</h1>
-            <p>JUAL PRODUK KEPERLUAN JB AMAN & AMANAH & TERPERCAYA HANYA DI ALYA STORE</p>
+            <h1><i class="fas fa-store"></i>ALYA STORE</h1>
+            <p>Temukan hosting terbaik dengan harga terjangkau</p>
         </header>
         
-        <div class="music-player">
-            <div class="music-title">🎵 Musik Latar 🎵</div>
-            <audio controls autoplay loop>
-                <source src="https://files.catbox.moe/02hb4h.mp3" type="audio/mpeg">
-                Browser Anda tidak mendukung elemen audio.
-            </audio>
+        <div class="products">
+            <!-- Produk-produk Anda -->
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">NOKOS ALL NEGARA</h3>
+                    <div class="product-price">Rp 6K - 20K</div>
+                    <p class="product-desc">Nomor virtual berbagai negara untuk berbagai keperluan</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PANEL PTYRODACTYL</h3>
+                    <div class="product-price">Rp 1K - 10K</div>
+                    <p class="product-desc">Panel kontrol untuk manajemen server yang efisien</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">RESSELER PANEL</h3>
+                    <div class="product-price">Rp 5K</div>
+                    <p class="product-desc">Akses panel khusus untuk reseller produk digital</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-user-cog"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">ADMIN PANEL</h3>
+                    <div class="product-price">Rp 10K</div>
+                    <p class="product-desc">Panel admin dengan fitur lengkap untuk manajemen sistem</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">OWNER PANEL</h3>
+                    <div class="product-price">Rp 20K</div>
+                    <p class="product-desc">Panel eksklusif dengan akses penuh untuk pemilik bisnis</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">FREE FIRE BETA</h3>
+                    <div class="product-price">Rp 15K - 25K</div>
+                    <p class="product-desc">Akses beta dan fitur eksklusif untuk game Free Fire</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MURID KENON</h3>
+                    <div class="product-price">Rp 25K</div>
+                    <p class="product-desc">Program pembelajaran khusus dengan metode Kenon</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MURID BUKA KENON</h3>
+                    <div class="product-price">Rp 15K</div>
+                    <p class="product-desc">Akses materi pembelajaran sistem Kenon</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">SEWA BOT WA</h3>
+                    <div class="product-price">Rp 5K - 15K</div>
+                    <p class="product-desc">Layanan sewa bot WhatsApp untuk otomatisasi pesan</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">APK KEPERLUAN JB</h3>
+                    <div class="product-price">Rp 5K - 10K</div>
+                    <p class="product-desc">Aplikasi Android untuk berbagai keperluan jailbreak</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">JASA BUAT WEB</h3>
+                    <div class="product-price">Rp 150K - 200K</div>
+                    <p class="product-desc">Layanan pembuatan website profesional sesuai kebutuhan</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">JASA BUAT APP</h3>
+                    <div class="product-price">Rp 350K - 500K</div>
+                    <p class="product-desc">Pengembangan aplikasi mobile custom untuk bisnis Anda</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">DEVELOPER PANEL</h3>
+                    <div class="product-price">Rp 35K</div>
+                    <p class="product-desc">Panel khusus untuk developer dengan tools lengkap</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">PENGURUS VIP</h3>
+                    <div class="product-price">Rp 50K</div>
+                    <p class="product-desc">Akses VIP untuk pengurus dengan fitur premium</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-hand-paper"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">TANGAN KIRI PANEL</h3>
+                    <div class="product-price">Rp 30K</div>
+                    <p class="product-desc">Panel akses khusus dengan fitur unik</p>
+                    <a href="#" class="btn btn-primary btn-block">Beli Sekarang</a>
+                </div>
+            </div>
         </div>
         
-        <div class="product-list">
-            <div class="product">
-                <div class="product-name">NOKOS ALL NEGARA</div>
-                <div class="product-price">Harga: Rp 8.000 - Rp 20.000</div>
-                <a href="https://wa.me/6288708554015?text=Saya%20tertarik%20untuk%20membeli%20produk%20NOKOS%20ALL%20NEGARA" class="whatsapp-btn">Beli via WhatsApp</a>
-            </div>
+        <!-- Bagian Testimoni -->
+        <div class="testimonials">
+            <h2 class="section-title"><i class="fas fa-comment-alt"></i> Testimoni Pembeli</h2>
             
-            <div class="product">
-                <div class="product-name">PANEL PTYRODACTYL</div>
-                <div class="product-price">Harga: Rp 1.000 - Rp 10.000</div>
-                <a href="https://wa.me/6288708554015?text=Saya%20tertarik%20untuk%20membeli%20produk%20PANEL%20PTYRODACTYL" class="whatsapp-btn">Beli via WhatsApp</a>
-            </div>
-            
-            <div class="product">
-                <div class="product-name">RESSELER PANEL</div>
-                <div class="product-price">Harga: Rp 5.000</div>
-                <a href="https://wa.me/6288708554015?text=Saya%20tertarik%20untuk%20membeli%20produk%20RESSELER%20PANEL" class="whatsapp-btn">Beli via WhatsApp</a>
-            </div>
-            
-            <div class="product">
-                <div class="product-name">ADMIN PANEL</div>
-                <div class="product-price">Harga: Rp 10.000</div>
-                <a href="https://wa.me/6288708554015?text=Saya%20tertarik%20untuk%20membeli%20produk%20ADMIN%20PANEL" class="whatsapp-btn">Beli via WhatsApp</a>
-            </div>
-            
-            <div class="product">
-                <div class="product-name">OWNER PANEL</div>
-                <div class="product-price">Harga: Rp 20.000</div>
-                <a href="https://wa.me/6288708554015?text=Saya%20tertarik%20untuk%20membeli%20produk%20OWNER%20PANEL" class="whatsapp-btn">Beli via WhatsApp</a>
-            </div>
-            
-            <div class="product">
-                <div class="product-name">FREE FIRE BETA</div>
-                <div class="product-price">Harga: Rp 15.000 - Rp 25.000</div>
-                <a href="https://wa.me/6288708554015?text=Saya%20tertarik%20untuk%20membeli%20produk%20FREE%20FIRE%20BETA" class="whatsapp-btn">Beli via WhatsApp</a>
-            </div>
-            
-            <div class="product">
-                <div class="product-name">MURID KENON</div>
-                <div class="product-price">Harga: Rp 25.000</div>
-                <a href="https://wa.me/6288708554015?text=Saya%20tertarik%20untuk%20membeli%20produk%20MURID%20KENON" class="whatsapp-btn">Beli via WhatsApp</a>
-            </div>
-            
-            <div class="product">
-                <div class="product-name">MURID BUKA KAN KENON</div>
-                <div class="product-price">Harga: Rp 15.000</div>
-                <a href="https://wa.me/6288708554015?text=Saya%20tertarik%20untuk%20membeli%20produk%20MURID%20BUKA%20KAN%20KENON" class="whatsapp-btn">Beli via WhatsApp</a>
-            </div>
-            
-            <div class="product">
-                <div class="product-name">SEWA BOT WA</div>
-                <div class="product-price">Harga: Rp 5.000 - Rp 15.000</div>
-                <a href="https://wa.me/6288708554015?text=Saya%20tertarik%20untuk%20membeli%20produk%20SEWA%20BOT%20WA" class="whatsapp-btn">Beli via WhatsApp</a>
-            </div>
-            
-            <div class="product">
-                <div class="product-name">APK KEPERLUAN JB</div>
-                <div class="product-price">Harga: Rp 5.000 - Rp 10.000</div>
-                <a href="https://wa.me/6288708554015?text=Saya%20tertarik%20untuk%20membeli%20produk%20APK%20KEPERLUAN%20JB" class="whatsapp-btn">Beli via WhatsApp</a>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Panel PTYRODACTYL sangat membantu bisnis saya! Fiturnya lengkap dan harganya terjangkau. Seller juga ramah dan fast respon."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>Rizky Pratama</h4>
+                            <p>Pembeli Panel PTYRODACTYL</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "NOKOS ALL NEGARA yang saya beli bekerja dengan sempurna. Proses transaksi cepat dan produk sesuai deskripsi. Recommended banget!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <h4>Siti Aminah</h4>
+                            <p>Pembeli NOKOS ALL NEGARA</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Jasa pembuatan web sangat profesional. Hasilnya melebihi ekspektasi saya. Support setelah pembelian juga sangat membantu."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Andi Wijaya</h4>
+                            <p>Pengguna Jasa Buat Web</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Bot WA yang saya sewa sangat membantu otomatisasi bisnis online saya. Tidak ada kendala dan seller memberikan tutorial lengkap."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">D</div>
+                        <div class="author-info">
+                            <h4>Dewi Lestari</h4>
+                            <p>Penyewa Bot WA</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "OWNER PANEL worth it banget untuk harga segitu! Fitur analytics-nya sangat membantu dalam mengambil keputusan bisnis."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">B</div>
+                        <div class="author-info">
+                            <h4>Budi Santoso</h4>
+                            <p>Pembeli OWNER PANEL</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Materi MURID KENON sangat bermanfaat untuk pengembangan skill saya. Penjelasannya mudah dipahami dan aplikatif."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">F</div>
+                        <div class="author-info">
+                            <h4>Fajar Nugraha</h4>
+                            <p>Pembeli MURID KENON</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div class="contact">
-            <h3>Hubungi Kami</h3>
-            <p>Untuk pemesanan atau informasi lebih lanjut, silakan hubungi kami melalui WhatsApp di nomor berikut:</p>
-            <a href="https://wa.me/6288708554015" class="whatsapp-btn" style="display: inline-block; margin-top: 10px;">ON WHATSAPP 24JAM</a>
-        </div>
-        
         <footer>
-            &copy; ALYA STORE INFO HOSTING MURAH SE-INDONESIA.
+            <p>&copy;ALYA STORE SOLUSI HOSTING MURAH IYA CUMA ALYA STORE.</p>
         </footer>
     </div>
+
+    <script>
+        // Musik Otomatis Diputar
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('bgMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            const musicIcon = document.getElementById('musicIcon');
+            
+            // Coba putar musik otomatis (dengan penanganan error)
+            function playAudio() {
+                audio.volume = 0.3; // Atur volume rendah
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        // Otomatis berhasil diputar
+                        musicIcon.classList.remove('fa-play');
+                        musicIcon.classList.add('fa-pause');
+                    })
+                    .catch(error => {
+                        // Autoplay diblokir, tampilkan tombol play
+                        musicIcon.classList.add('fa-play');
+                        musicIcon.classList.remove('fa-pause');
+                    });
+                }
+            }
+            
+            // Coba putar saat halaman dimuat
+            playAudio();
+            
+            // Toggle play/pause saat tombol diklik
+            musicToggle.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    musicIcon.classList.remove('fa-play');
+                    musicIcon.classList.add('fa-pause');
+                } else {
+                    audio.pause();
+                    musicIcon.classList.remove('fa-pause');
+                    musicIcon.classList.add('fa-play');
+                }
+            });
+            
+            // Periksa status musik secara berkala (untuk menangani autoplay policy)
+            setInterval(() => {
+                if (!audio.paused) {
+                    musicIcon.classList.remove('fa-play');
+                    musicIcon.classList.add('fa-pause');
+                }
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
